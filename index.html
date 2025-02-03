@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Vault</title>
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Merienda:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="css/common.css" class="css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .about-img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .skill-progress {
+            height: 20px;
+            border-radius: 10px;
+        }
+        .testimonial-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-form .form-control {
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .contact-form .btn {
+            border-radius: 10px;
+            padding: 10px 20px;
+        }
+        /* Updated layout for skills and education to appear side by side */
+        .skills-education-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;  /* Adds space between the two sections */
+        }
+
+        .skills-section, .education-section {
+            flex: 1;
+            min-width: 250px;  /* Minimum width for each section */
+            max-width: 45%; /* Max width to ensure they stay smaller */
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #007bff;  /* Timeline line color */
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%); /* Ensures it is exactly centered */
+            border-radius: 4px;
+        }
+
+        .timeline-item {
+            position: relative;
+            background-color: white;
+            width: 45%;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+            margin-left: 5%;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-item .date {
+            color: #007bff;
+            font-weight: bold;
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #007bff;
+            border-radius: 50%;
+            border: 5px solid white;
+            top: 20px;  /* Position the dot 20px down from the top of the timeline item */
+            left: 50%;
+            transform: translateX(-50%); /* Centers the dot on the line */
+            z-index: 1;
+        }
+
+        .left {
+            align-self: flex-start;
+        }
+
+        .right {
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        .timeline-item h3 {
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .timeline-item p {
+            color: #555;
+            font-size: 1rem;
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .timeline {
+                padding: 20px;
+            }
+            .timeline-item {
+                width: 90%;
+            }
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            border-radius: 5px;
+            padding: 10px 15px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .contact-form {
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-form .form-control {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 12px;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            resize: none;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .testimonial-card:hover {
+            transform: scale(1.05);
+        }
+
+        .testi-avatar img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+            border: 3px solid #007bff;
+        }
+
+        .testi-content h4 {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #333;
+        }
+
+        .testi-avatar-info h5 {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .testi-avatar-info span {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+
+        /* Custom Styling for the Heading */
+.text-black {
+    color: black !important; /* Ensures the text is black */
+}
+
+.display-4 {
+    font-size: 2rem; /* Larger size */
+    font-weight: bold; /* Bold text */
+}
+/* Custom Styling for Contact Button */
+.contact-btn {
+    display: inline-block;
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.contact-btn:hover {
+    background-color: black;
+    color: white;
+}
+/* Custom Styling for Image */
+.smaller-img {
+    width: 70%; /* Adjusts the width to 50% of its parent container */
+    max-width: 500px; /* Limits the max width to 200px */
+    height: auto; /* Ensures the height maintains aspect ratio */
+}
+/* Increased space between sections */
+section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin-bottom: 40px;  /* Adds space after each section */
+}
+
+/* Specific section updates (optional) */
+#about, #projects, #testimonials, #contact {
+    margin-bottom: 60px;  /* Adds more space after these specific sections */
+}
+
+/* Adjusting the timeline section for better spacing */
+.timeline {
+    margin-bottom: 60px;  /* Space after the timeline section */
+}
+
+/* Testimonial Card */
+.testimonial-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    border: 2px solid black; /* Added black border */
+}
+
+.testimonial-card:hover {
+    transform: scale(1.05);
+}
+
+/* Project Card */
+.card {
+    border: 2px solid black; /* Added black border */
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-lg-3 py-lg-2 shadow-sm sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">Delvin</a>
+            <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active me-2" aria-current="page" href="index.php">My Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link me-2" href="Portfolios.php">About me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link me-2" href="#">Contact me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link me-2" href="#">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link me-2" href="#">SKills</a>
+                    </li>
+                </ul>
+
+            
+            </div>
+        </div>
+    </nav>
+    
+
+<!-- About Me Section -->
+<section class="container py-5" id="about">
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <h2 class="text-black display-4">I am Ahsan Shaheer</h2> <!-- Added heading with larger size and black color -->
+            <p>Hello! I'm Ahsan Shaheer, a passionate game developer with experience in Godot. I specialize in creating fun and visually appealing websites that enhance user experience.</p>
+            <p>With over 5 years of experience in the industry, I have worked on a variety of projects.</p>
+            <a href="#contact" class="btn contact-btn">Contact me</a> 
+        </div>
+        <div class="col-lg-6 text-center">
+            <img src="1.jpg" alt="Your Picture" class="img-fluid rounded-circle smaller-img">
+        </div>
+    </div>
+</section>
+
+
+    <div class="container">
+        <div class="row">
+            <!-- Skills and Education Sections -->
+            <div class="skills-education-container">
+                <!-- Skills Section -->
+                <section class="skills-section">
+                    <h2 class="section-title">My Skills</h2>
+                    <div class="mb-3">HTML <span class="float-end">95%</span></div>
+                    <div class="progress mb-3"><div class="progress-bar bg-primary" style="width: 95%;"></div></div>
+                    <div class="mb-3">CSS <span class="float-end">85%</span></div>
+                    <div class="progress mb-3"><div class="progress-bar bg-warning" style="width: 85%;"></div></div>
+                    <div class="mb-3">JavaScript <span class="float-end">20%</span></div>
+                    <div class="progress mb-3"><div class="progress-bar bg-danger" style="width: 20%;"></div></div>
+                    <div class="mb-3">PHP <span class="float-end">60%</span></div>
+                    <div class="progress mb-3"><div class="progress-bar bg-success" style="width: 60%;"></div></div>
+                    <div class="mb-3">GDScript <span class="float-end">70%</span></div>
+                    <div class="progress mb-3"><div class="progress-bar bg-success" style="width: 70%;"></div></div>
+                    <div class="mb-3">C# <span class="float-end">70%</span></div>
+                    <div class="progress mb-3"><div class="progress-bar bg-success" style="width: 70%;"></div></div>
+                </section>
+
+                <!-- Education Section -->
+                <section class="education-section">
+                    <h2 class="section-title">Education</h2>
+                    <img src="timeline.png" alt="Your Picture" class="img-fluid ">
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <section class="container py-5" id="projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 1</h5>
+                        <p class="card-text">Description of Project 1</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 2</h5>
+                        <p class="card-text">Description of Project 2</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 3</h5>
+                        <p class="card-text">Description of Project 3</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 4</h5>
+                        <p class="card-text">Description of Project 4</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 5</h5>
+                        <p class="card-text">Description of Project 5</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 6</h5>
+                        <p class="card-text">Description of Project 6</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="container py-5" id="testimonials">
+        <h2 class="section-title">Testimonials</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="testi-avatar">
+                        <img src="1.jpg" alt="User Avatar">
+                    </div>
+                    <div class="testi-content">
+                        <h4>"Ahsan is an excellent developer!"</h4>
+                    </div>
+                    <div class="testi-avatar-info">
+                        <h5>John Doe</h5>
+                        <span>Client</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="testi-avatar">
+                        <img src="1.jpg" alt="User Avatar">
+                    </div>
+                    <div class="testi-content">
+                        <h4>"Ahsan is an excellent developer!"</h4>
+                    </div>
+                    <div class="testi-avatar-info">
+                        <h5>John Doe</h5>
+                        <span>Client</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="testi-avatar">
+                        <img src="1.jpg" alt="User Avatar">
+                    </div>
+                    <div class="testi-content">
+                        <h4>"Ahsan is an excellent developer!"</h4>
+                    </div>
+                    <div class="testi-avatar-info">
+                        <h5>John Doe</h5>
+                        <span>Client</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="container py-5" id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <form action="#" class="contact-form">
+            <input type="text" class="form-control mb-3" placeholder="Your Name" required>
+            <input type="email" class="form-control mb-3" placeholder="Your Email" required>
+            <textarea class="form-control mb-3" placeholder="Your Message" required></textarea>
+            <button class="btn btn-primary">Send Message</button>
+        </form>
+    </section>
+
+    
+ <!-- Call to Action Section -->
+ <section class="py-5 mt-5 text-center bg-dark text-white">
+    <div class="container">
+        <h2 class="fw-bold mb-3 h-font">Get In Touch</h2>
+        <p class="mb-5">Have any questions or want to get in touch? Reach out to us!</p>
+
+        <div class="row text-center pt-4">
+            <!-- Contact Information -->
+            <div class="col-md-4 mb-4 border-end border-light">
+                <h5 class="mb-3">Contact Information</h5>
+                <p class="d-flex align-items-center justify-content-center mb-2">
+                    <i class="bi bi-telephone fs-5 me-2"></i> +92 341 169676
+                </p>
+                <p class="d-flex align-items-center justify-content-center">
+                    <i class="bi bi-envelope fs-5 me-2"></i> contact@skillvault.com
+                </p>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="col-md-4 mb-4 border-end border-light">
+                <h5 class="mb-3">Follow Us</h5>
+                <div class="d-flex justify-content-center">
+                    <div class="row">
+                        <!-- Social Media Column 1 -->
+                        <div class="col-6">
+                            <a href="https://www.linkedin.com" class="d-flex align-items-center justify-content-center mb-3">
+                                <i class="bi bi-linkedin fs-4 me-2"></i> LinkedIn
+                            </a>
+                            <a href="https://twitter.com" target="_blank" class="d-flex align-items-center justify-content-center mb-3">
+                                <i class="bi bi-twitter fs-4 me-2"></i> Twitter
+                            </a>
+                            <a href="https://www.instagram.com" target="_blank" class="d-flex align-items-center justify-content-center mb-3">
+                                <i class="bi bi-instagram fs-4 me-2"></i> Instagram
+                            </a>
+                        </div>
+
+                        <!-- Social Media Column 2 -->
+                        <div class="col-6">
+                            <a href="https://github.com" target="_blank" class="d-flex align-items-center justify-content-center mb-3">
+                                <i class="bi bi-github fs-4 me-2"></i> GitHub
+                            </a>
+                            <a href="https://www.facebook.com" target="_blank" class="d-flex align-items-center justify-content-center mb-3">
+                                <i class="bi bi-facebook fs-4 me-2"></i> Facebook
+                            </a>
+                            <a href="https://www.youtube.com" target="_blank" class="d-flex align-items-center justify-content-center mb-3">
+                                <i class="bi bi-youtube fs-4 me-2"></i> YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address Information -->
+            <div class="col-md-4 mb-4">
+                <h5 class="mb-3">Our Address</h5>
+                <p class="d-flex align-items-center justify-content-center">
+                    <i class="bi bi-geo-alt fs-5 me-2"></i> 1234 Portfolio St, Suite 567, City, Country
+                </p>
+                <p>© 2024 Skill Vault, All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+
+
+</body>
+
+</html>
